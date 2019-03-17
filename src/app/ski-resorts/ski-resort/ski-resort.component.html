@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-4">
+    <img src="../../../{{currentMountain?.picture}}" width="500">
+  </div>
+
+  <div class="col-8">
+    <span class="header">{{currentMountain?.name}}, </span><span class="country">{{currentMountain?.country}}</span>
+    <p>{{currentMountain?.description}}</p>
+    <span>Elevation: {{currentMountain?.base_elevation_m}}, </span>
+    <span>Highest Point: {{currentMountain?.highest_point}}, </span>
+    <span>Top Elevation: {{currentMountain?.top_elevation_m}}</span>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <ngb-tabset justify="fill">
+      <ngb-tab title="Tracks">
+        <ng-template ngbTabContent>
+          <ski-tracks [track]="currentTrack" (newSortingInc)="changeSort($event)"></ski-tracks>
+        </ng-template>
+      </ngb-tab>
+
+      <ngb-tab title="Weather">
+        <ng-template ngbTabContent>
+          <ski-weather [weather]="currentWeather"></ski-weather>
+        </ng-template>
+      </ngb-tab>
+
+      <ngb-tab title="Ski Pass">
+        <ng-template ngbTabContent>
+          <ski-ski-pass [skiPrice]="currentSkiPrice" (reserveEmitter)="update($event)"></ski-ski-pass>
+        </ng-template>
+      </ngb-tab>
+    </ngb-tabset>
+  </div>
+</div>

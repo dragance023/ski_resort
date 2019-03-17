@@ -1,0 +1,62 @@
+<div class="row">
+  <div class="col-4">
+    <table class="table table-dark">
+      <thead>
+        <th>Days</th>
+        <th>Price</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let s of skiPrice">
+          <td>{{ s?.duration }}</td>
+          <td>{{ s?.price }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-8">
+    <form>
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">First name</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" placeholder="first name" name="firstName" [(ngModel)]="reservation.firstName">
+        </div>
+      </div>
+<p>{{ reservation | json }}</p>
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Last name</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" placeholder="last name" name="lastName" [(ngModel)]="reservation.lastName">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">From</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="reservation.from" 
+          ngbDatepicker #from="ngbDatepicker" (click)="from.toggle()">
+        </div>
+
+        <label class="col-sm-2 col-form-label">To</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="reservation.to" 
+          ngbDatepicker #to="ngbDatepicker" (click)="to.toggle()">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Price</label>
+        <div class="col-sm-10">
+          <input type="email" class="form-control" placeholder="last name" readonly name="price" [(ngModel)]="reservation.price">
+        </div>
+      </div>
+      <button class="btn btn-primary" (click)="reserve()">Reserve</button>
+      <button class="btn btn-dark float-right" (click)="calculatePrice()">Calculate</button>
+    </form>
+  </div>
+</div>
+
+
+
+
+
+
